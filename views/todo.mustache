@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Todo List</title>
+  </head>
+  <body>
+    <ul>
+      {{#toDos}}
+      <li>
+        {{^complete}}
+        <form action="/complete" method="post">
+        <button name="complete" value="{{todo}}">Mark Complete</button>
+        {{todo}}
+        </form>
+        <input type="checkbox">
+        {{text}}
+        {{/complete}}
+      </li>
+      {{#toDos}}
+    </ul>
+    <h2>Completed Tasks:</h2>
+    <ul>
+      {{#toDos}}
+      <li>
+        {{^complete}}
+        <input type="checkbox">
+        {{text}}
+        {{/complete}}
+      </li>
+      {{#toDos}}
+    </ul>
+    <script src="main.js"></script>
+  </body>
+</html>
