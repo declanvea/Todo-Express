@@ -6,29 +6,37 @@
   </head>
   <body>
     <ul>
-      {{#toDos}}
+
+      <h1> To Do List </h1>
+      <form action="/" method="post">
+      <input type="text" name="todo" placeholder="Add a todo...">
+      <button type="submit">Submit</button>
+      </form>
+      <input type="checkbox">
+      <!-- ${{todo}} -->
+      {{#list}}
       <li>
-        {{^complete}}
-        <form action="/complete" method="post">
+        {{^yetTodo}}
+        <form action="/" method="post">
         <button name="complete" value="{{todo}}">Mark Complete</button>
         {{todo}}
         </form>
         <input type="checkbox">
         {{text}}
-        {{/complete}}
+        {{/yetTodo}}
       </li>
-      {{#toDos}}
+      {{/list}}
     </ul>
     <h2>Completed Tasks:</h2>
     <ul>
-      {{#toDos}}
+      {{#list}}
       <li>
-        {{^complete}}
-        <input type="checkbox">
-        {{text}}
-        {{/complete}}
+        {{^yetTodo}}
+        <input type="checkbox" checked>
+        <del>{{text}}</del>
+        {{/yetTodo}}
       </li>
-      {{#toDos}}
+      {{/list}}
     </ul>
     <script src="main.js"></script>
   </body>
